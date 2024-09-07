@@ -16,15 +16,17 @@ app = FastAPI(
 #     return "Hello world!"
 
 #поиск по имени
-@app.get("/users/{name}")
+@app.get("/users/by-name/{name}")
 async def get_user_name(name: str):
     return [user for user in fake_users if user.get("name") == name]
 
 
-# @app.get("/users/{surname}")
-# async def get_user_surname(surname: str):
-#     # Возвращает список пользователей, у которых фамилия совпадает с переданным параметром surname
-#     return [user for user in fake_users if user.get("surname") == surname]
+@app.get("/users/by-surname/{surname}")
+async def get_user_surname(surname: str):
+    # Возвращает список пользователей, у которых фамилия совпадает с переданным параметром surname
+    print(surname)
+    return [user for user in fake_users if user.get("surname") == surname]
+
 
 
 #поиск по id
